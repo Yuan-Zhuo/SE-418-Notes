@@ -91,6 +91,26 @@ HTTPS 为您的网站和将个人信息委托给您的网站的人提供了重�
 
 <img src="img/security.png" width = "300" height = "200" alt="图片名称"/>
 
+## SJTU 官网分析
+
+主要从网络、性能、内存三个方面和 THU、FDU 比较
+
+1. Network
+
+- 上海交大
+  <img src="img/sjtu_network.png" width = "300" height = "200" alt="图片名称"/>
+
+- 清华大学
+  <img src="img/thu_network.png" width = "300" height = "200" alt="图片名称"/>
+- 复旦大学
+  <img src="img/fdu_network.png" width = "300" height = "200" alt="图片名称"/>
+
+可见，上海交大官网加载从发起 Request 到获取到 Response 的时间最长，加载的资源(css, js, img)最多，尤其是首页走马灯的两张照片分别花费了 300ms 以上时间，是其余资源的 10 倍以上。而另外两所时间短，首页走马灯图片花费时间少，且加载靠后，说明进行优化，手段包括：
+
+- 延迟首屏不需要的图片加载
+- 在保证清晰度的前提下尽量使用体积较小的图片(单位像素优化、图片像素总数优化)
+- 调整加载顺序
+
 ## 参考
 
 [Chrome 开发者工具](https://developers.google.com/web/tools/chrome-devtools/?hl=zh-cn)
