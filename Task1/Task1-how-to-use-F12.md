@@ -30,8 +30,7 @@
 
 下图使用以上方法，可以对官网界面做出修改,下图将“春夏”改为“秋冬”，大标题颜色改为“blanchedalmond”
 
-<img src="img/elements
-.png" width = "300" height = "200" alt="图片名称"/>
+<img src="img/elements.png" width = "300" height = "200" alt="图片名称"/>
 
 3. 控制台面板
 
@@ -97,32 +96,32 @@ HTTPS 为您的网站和将个人信息委托给您的网站的人提供了重�
 
 1. Network
 
-- 上海交大
+- 上海交大<br>
   <img src="img/sjtu_network.png" width = "300" height = "200" alt="图片名称"/>
 
-- 清华大学
+- 清华大学<br>
   <img src="img/thu_network.png" width = "300" height = "200" alt="图片名称"/>
-- 复旦大学
+- 复旦大学<br>
   <img src="img/fdu_network.png" width = "300" height = "200" alt="图片名称"/>
 
 2. Performance
 
-- 上海交大
+- 上海交大<br>
   <img src="img/sjtu_performance.png" width = "300" height = "200" alt="图片名称"/>
 
-- 清华大学
+- 清华大学<br>
   <img src="img/thu_performance.png" width = "300" height = "200" alt="图片名称"/>
-- 复旦大学
+- 复旦大学<br>
   <img src="img/fdu_performance.png" width = "300" height = "200" alt="图片名称"/>
 
 3. Profile
 
-- 上海交大
+- 上海交大<br>
   <img src="img/sjtu_profile.png" width = "300" height = "200" alt="图片名称"/>
 
-- 清华大学
+- 清华大学<br>
   <img src="img/thu_profile.png" width = "300" height = "200" alt="图片名称"/>
-- 复旦大学
+- 复旦大学<br>
   <img src="img/fdu_profile.png" width = "300" height = "200" alt="图片名称"/>
 
 可见，上海交大官网加载从发起 Request 到获取到 Response 的时间最长，加载的资源(css, js, img)最多，尤其是首页走马灯的两张照片分别花费了 300ms 以上时间，是其余资源的 10 倍以上。而另外两所时间短，首页走马灯图片花费时间少，且加载靠后，说明进行优化，手段包括：
