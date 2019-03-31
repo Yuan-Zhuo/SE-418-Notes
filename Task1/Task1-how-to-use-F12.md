@@ -76,13 +76,13 @@
 - JavaScript CPU 分析器
 - 内存堆区分析器
 
-6. 应用面板
+8. 应用面板
 
 使用安全面板调试混合内容问题，证书问题等等。
 
 <img src="img/app.png" width = "300" height = "200" alt="图片名称"/>
 
-7. 安全面板
+9. 安全面板
 
 HTTPS 为您的网站和将个人信息委托给您的网站的人提供了重要的安全性和数据完整性。在 Chrome DevTools 中使用 Security 面板调试安全问题，可以确保已在自己的网站上恰当地实现 HTTPS。
 
@@ -105,11 +105,31 @@ HTTPS 为您的网站和将个人信息委托给您的网站的人提供了重�
 - 复旦大学
   <img src="img/fdu_network.png" width = "300" height = "200" alt="图片名称"/>
 
+2. Performance
+
+- 上海交大
+  <img src="img/sjtu_performance.png" width = "300" height = "200" alt="图片名称"/>
+
+- 清华大学
+  <img src="img/thu_performance.png" width = "300" height = "200" alt="图片名称"/>
+- 复旦大学
+  <img src="img/fdu_performance.png" width = "300" height = "200" alt="图片名称"/>
+
+3. Profile
+
+- 上海交大
+  <img src="img/sjtu_profile.png" width = "300" height = "200" alt="图片名称"/>
+
+- 清华大学
+  <img src="img/thu_profile.png" width = "300" height = "200" alt="图片名称"/>
+- 复旦大学
+  <img src="img/fdu_profile.png" width = "300" height = "200" alt="图片名称"/>
+
 可见，上海交大官网加载从发起 Request 到获取到 Response 的时间最长，加载的资源(css, js, img)最多，尤其是首页走马灯的两张照片分别花费了 300ms 以上时间，是其余资源的 10 倍以上。而另外两所时间短，首页走马灯图片花费时间少，且加载靠后，说明进行优化，手段包括：
 
-- 延迟首屏不需要的图片加载
+- 延迟首屏不需要的资源加载
 - 在保证清晰度的前提下尽量使用体积较小的图片(单位像素优化、图片像素总数优化)
-- 调整加载顺序
+- 调整各个资源加载顺序
 
 ## 参考
 
