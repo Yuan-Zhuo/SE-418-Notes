@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class MulApp {
 
     public static void main(String[] args) throws InterruptedException {
-        int proNum = 2, conNum = 2;
+        int proNum = 1, conNum = 1;
         RunProcedureConsumer(proNum,conNum);
     }
 
@@ -28,7 +28,7 @@ public class MulApp {
         AtomicInteger proCnt = new AtomicInteger(0);
         AtomicInteger proTotCnt = new AtomicInteger(0);
         AtomicInteger proHandleCnt = new AtomicInteger(0);
-        int timeout = 1500;
+        int timeout = 2000;
 
         int reqValid, reqHandle;
 
@@ -53,7 +53,7 @@ public class MulApp {
             service.execute(theConsumerList.get(i));
         }
 
-        Thread.sleep(5 * 1000);
+        Thread.sleep(10 * 1000);
         System.out.println("> Terminal Now.");
         service.shutdownNow();
         Thread.sleep(1000);
@@ -63,7 +63,7 @@ public class MulApp {
 
         reqValid = reqCnt.get() - reqCanceledCnt.get() - reqRemain(reqDeque);
 
-        System.out.println("Procedure Handle: " + reqValid);
+        System.out.println("Procedure Handle: " + proHandleCnt.get());
 
         System.out.println();
 
