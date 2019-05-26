@@ -8,16 +8,23 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Producer implements Runnable {
 
     private AtomicInteger proCnt;
+    private AtomicInteger proTotCnt;
+    private AtomicInteger reqCanceledCnt;
+    private AtomicInteger proHandleCnt;
     private AtomicInteger successCnt;
     private AtomicInteger failCnt;
     private LinkedBlockingDeque<Request> reqDeque;
     private long timeout;
 
-    public Producer(LinkedBlockingDeque<Request> reqDeque, AtomicInteger proCnt, long timeout) {
+    public Producer(LinkedBlockingDeque<Request> reqDeque, AtomicInteger proCnt,AtomicInteger proTotCnt,AtomicInteger proHandleCntCnt, AtomicInteger reqCanceledCnt,long timeout) {
         this.reqDeque = reqDeque;
         this.proCnt = proCnt;
+        this.proTotCnt = proTotCnt;
+        this.reqCanceledCnt = reqCanceledCnt;
+        this.proHandleCnt = proHandleCntCnt;
         this.successCnt = new AtomicInteger(0);
         this.failCnt = new AtomicInteger(0);
+        this.timeout = timeout;
     }
 
     @Override
@@ -63,8 +70,9 @@ public class Producer implements Runnable {
 
     private int produce_resource() {
         Random resource = new Random();
-        int curproCnt = resource.nextInt(10) + 1;
-        this.proCnt.addAndGet(curproCnt);
+        int curproCnt = resource.nextInt(5) + 1;
+        this.proCnt.updateAndGet(x -> (x + curproCnt));
+        this.proTotCnt.updateAndGet(x -> (x + curproCnt));
         return curproCnt;
     }
 
@@ -73,14 +81,16 @@ public class Producer implements Runnable {
             /*
              * Timeout Check: ignore request if timeout.
              * */
-            if (request.getTime() + timeout > System.currentTimeMillis()) {
+            if (request.getTime() + timeout < System.currentTimeMillis()) {
+                this.reqCanceledCnt.updateAndGet(x -> (x + request.getNum()));
                 this.failCnt.incrementAndGet();
                 System.out.println("- Request: " + request.getNum() + " Timeout.");
             } else {
+                this.proHandleCnt.updateAndGet(x -> (x + request.getNum()));
                 this.proCnt.updateAndGet(x -> (x - request.getNum()));
                 this.successCnt.incrementAndGet();
                 System.out.println("- Request: " + request.getNum() + " handled.");
-            }
+             }
 
             this.reqDeque.remove(request);
 

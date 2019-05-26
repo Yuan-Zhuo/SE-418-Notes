@@ -25,10 +25,9 @@ public class Consumer implements Runnable {
                  *  Timeout check: cancel request if timeout.
                  * */
                 Request req = new Request();
-                long curtime = System.currentTimeMillis();
-                if (this.reqDeque.offerLast(req, timeout - (curtime - req.getTime()), TimeUnit.MILLISECONDS)) {
+                if (this.reqDeque.offerLast(req, timeout, TimeUnit.MILLISECONDS)) {
                     System.out.println("+ Request: " + req.getNum() + " Adding: Success.");
-                    this.reqCnt.incrementAndGet();
+                    this.reqCnt.updateAndGet(x -> (x + req.getNum()));
                 } else {
                     System.out.println("+ Request Adding: " + req.getNum() + " Timeout.");
                 }
