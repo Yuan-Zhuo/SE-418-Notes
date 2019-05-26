@@ -13,7 +13,7 @@ private Long time;
 
 2. Consumer:模拟用户
 
-- 生成请求，加入请求队列
+- 生成请求，加入请求队列，timeout 检查
 
 ```java
 while (true) {
@@ -46,7 +46,7 @@ private int produce_resource() {
 }
 ```
 
-- 处理请求
+- 处理请求，timeout 检查
 
 ```java
 private void handleRequest(Request request) {
@@ -74,7 +74,7 @@ private void handleRequest(Request request) {
 }
 ```
 
-- 动态调控
+- 动态调控，以队列或者栈的方式
 
 ```java
 while (true) {
